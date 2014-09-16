@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 21, 2014, 10:13:33 PM
+    Author     : Thinker
+*/
+/*map style*/
+#map_inputs{
+    position:absolute;
+    /*right:10px;*/
+    padding-left: 10px;
+    padding-top: 10px;
+    z-index: 1000;
+}
+#map_container{
+    /*top: -100px;*/
+    width: 100%; //1067px;
+    height: 100%;
+    float: left;
+}
+#map_canvas{
+    /*width: 1100px;*/	
+    height: 500px;
+    border: 1px solid darkgrey;
+}

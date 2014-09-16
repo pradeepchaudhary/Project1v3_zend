@@ -1,0 +1,26 @@
+<?php
+//    $this->layout('layout.phtml');
+    $title = 'Edit Exam';
+    $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<!--<div class="row">-->
+   <?php
+   $form = $this->form;
+   $url = $this->url('data', array('action' => 'edit', 'id' => $id));
+   $form->setAttribute('action', $url);
+   $form->get('submit')->setAttribute('value', 'Edit');
+   $form->prepare();
+
+   echo $this->form()->openTag($form);
+   echo $this->formHidden($form->get('exam_id'));
+   echo $this->formRow($form->get('examname')->setAttribute('class', 'form-control'));
+   echo $this->formRow($form->get('visible')->setAttribute('class', 'col-xs-push-1'));
+   ?>
+<!--</div>-->
+ <div>
+ <?php echo $this->formInput($form->get('submit')); ?>
+ </div>
+ <?php
+ echo $this->form()->closeTag($form);

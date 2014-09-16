@@ -1,0 +1,51 @@
+*{ margin:0; padding:0;}
+:focus{ outline:none;}
+img{ border:none;}
+a{ text-decoration:none;}
+
+body{ background:#e9e9e9; font-family:Tahoma, Geneva, sans-serif; font-size:12px; color:#121212;}
+
+.hOuter{ width:100%; float:left; height:180px; background:#045ea0; border-bottom:solid 2px #b9191c;}
+.innerWrapH{ width:1000px; float:left;padding:10px 0; margin:0 0 25px 0;}
+.wrapper{ width:1000px; margin:0 auto; }
+.innerWrap{ width:980px; float:left;   background:#fff; padding:10px; margin:0 0 25px 0;}
+
+.haederDiv{ width:100%; float:left; position:relative; margin:7px 0 8px 0;}
+.logoDiv{ width:120px; height:87px; float:left; margin:7px 0 0 100px;}
+.logoText{ width: 535px; float:left; margin: 35px 0 0 20px; font-family:Georgia, "Times New Roman", Times, serif; font-size: 23px; color:#fff; text-align:center;}
+.logoTextIns{ width: 535px; float:left; margin: 35px 0 0 20px; font-family:Georgia, "Times New Roman", Times, serif; font-size: 23px; color:#90472e; text-align:center;}
+.dateDiv{ position:absolute; bottom:0; right:0; font-size:14px; color:#72c9ff;}
+.MHeading2{width: 100%;float: left;font-size: 16px;text-align: center;color: #fff;margin: 25px 0 0 0; }
+.naviDiv{width:100%; float:left; margin:20px 0 20px 0; background:#b9191c; color:#fff; text-align:center;  border-top:solid 1px #9c0205; border-bottom:solid 1px #9c0205; border-radius:4px 4px 0 0;}
+.naviDiv li{ float:left; display:inline; list-style:none;}
+.naviDiv li a{ color:#fff; padding:12px 20px; float:left; font-size:13px; transition:all 0.7s ease; border-right:dotted 1px #db6e49;} 
+.naviDiv li a:hover{ background:#960b0e;}
+
+.MHeading{ width:100%; float:left; margin:10px 0; padding:10px 0;color:#fff; font-size:17px; font-family:Georgia, "Times New Roman", Times, serif; text-align:center; border-bottom:dotted 1px #c5c5c5; background:#1b7fbd;}
+.MHeadingIns{ width:100%; float:left; margin:10px 0; padding:10px 0;color:#fff; font-size:17px; font-family:Georgia, "Times New Roman", Times, serif; text-align:center; border-bottom:dotted 1px #c5c5c5; background:#90472e;}
+.midCOntDiv{ width:100%; float:left; margin:15px 0; }
+
+.midLeftCOnt{ width:220px; float:left; min-height:240px; border:solid 1px #e7e7e7; border-radius:0 0 4px 4px; border-bottom:solid 3px #eaeaea;}
+.midRightCOnt{ width:740px; float:right; }
+.midImg{ width:735px; float:left;   border:solid 1px #fff; box-shadow:0 0 5px #c5c5c5;}
+.midImg img{ width:735px;}
+
+.NTitle{ width:96.4%; float:left; padding:7px 0 7px 4%; background:#b9191c; color:#fff; font-size:18px; font-family:Georgia, "Times New Roman", Times, serif;  border-bottom:solid 3px #9c0205;}
+.notiUL{ width:100%; float:left;  margin:7px 0; }
+.notiUL li{ float:left; display:block; list-style:none; width:100%; }
+ .notiUL li:last-child{ border-bottom:none !important;}
+.notiUL li a{ color:#404040; font-size:13px; width:100%; padding:8px 0 8px 7%; width:93%; float:left;  border-bottom:dotted 1px #c5c5c5;  background:url(images/arrowsICON.png) no-repeat left; background-position:0px 12px;} .notiUL li:hover{ background:#f5f5f5 url(images/arrowsICON.png) no-repeat left; background-position:0px 12px;}
+.notiUL li a:hover{ color:#aa3030;}
+
+.bottomButton{ width:100%; float:left;  margin:35px 0;}
+.bottomButton li{ width:170px;  float:left; display:inline-block; *display:inline; zoom:1;  margin:0 7px 15px 7px;}
+.bottomButton li a{ width:170px; padding:10px 0; font-size:14px; font-family:Georgia, "Times New Roman", Times, serif; background:#b9191c; text-align:center; float:left; border-radius:12px; border-bottom:solid 3px #9c0205; color:#fff; transition:all ease 0.7s;}
+.bottomButton li a:hover{ background:#790002; border-bottom:solid 3px #500002;}
+
+.copyRightDiv{ width:100%; float:left; margin:20px 0;}
+#powered{ float:right;}
+#powered p{ width:815px; color:#707070; float:left; text-align:right; margin-top:40px; padding-right:5px;}
+#powered span {width:120px; height:52px; float:left;  background:url(images/IRC-logo.png) no-repeat right top;}
+#powered span a {width:100%; height:52px; float:left;}
+#powered p a{ color:#42a2d9; text-decoration:none;}
+#powered p a:hover{ text-decoration:underline;}

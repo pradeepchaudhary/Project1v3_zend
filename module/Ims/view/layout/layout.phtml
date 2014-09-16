@@ -1,0 +1,121 @@
+<?php echo $this->doctype(); ?>
+<?php 
+
+//use Ims\Controller\ApplicantController;
+//use Ims\Model\ApplicantEntity;
+//use Ims\Form\ApplicantFilter;
+//use Ims\Form\ApplicantForm;
+use ZfcUser\Controller\UserController;
+use ZfcUser\Form\Login;
+?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('PC1v3 Information Management System'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+
+    </head>
+    <body>
+	<?php
+    $current_page_name = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+	//    echo "The current page name is ".$current_page_name;
+	?>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <!--<a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/pc1v3-logo.png') ?>" alt="PC1v3 IMS"/>&nbsp;<?php echo $this->translate('PC1v3 Information Management System') ?></a>-->
+                    <a class="navbar-brand" href="<?php echo $this->url('home'); ?>"><?php echo $this->translate('PC1v3 Information Management System') ?></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <!-- Test if the User is connected -->
+                    <?php if(!$this->zfcUserIdentity()): ?>
+                    <!-- display the login form -->
+                    <?php 
+                    $form = $this->zfcUserLoginWidget(array('render' => false))->getVariable('loginForm');
+                    $form->prepare();
+                    $form->setAttribute('action', $this->url('zfcuser/login'));
+                    $form->setAttribute('method', 'post');
+                    $form->setAttribute('class', 'navbar-form navbar-right form-inline');
+                    echo $this->form()->openTag($form);
+                    ?>
+                    <div class="form-group">
+                        <!--div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span-->
+                                <?php echo $this->formInput($form->get('identity')->setAttribute('class', 'form-control')->setAttribute('placeholder','Email address')) ?>
+                        <!--/div-->
+                        <?php echo $this->formInput($form->get('credential')->setAttribute('class', 'form-control')->setAttribute('placeholder','Password')) ?>
+                        <?php if ($this->redirect): ?>
+                            <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>"/>
+                        <?php endif ?>
+                        <?php echo $this->formButton($form->get('submit')->setAttribute('class', 'btn btn-primary')); ?>
+                        <?php echo $this->formElementErrors($form->get('identity')); ?>
+                    </div>
+                    <?php
+                    echo $this->form()->closeTag();
+                    ?>
+                    <?php else: ?>
+                    <!-- display the 'display name' of the user and other options -->
+                    <?php // echo $this->zfcUserDisplayname(); ?>
+                    <ul class="nav navbar-right navbar-inline navbar-nav">
+                        <li><a href="<?php echo $this->zfcUserDisplayname();?>"><span class="glyphicon glyphicon-user"></span> <?php echo ucfirst($this->zfcUserDisplayname()); ?></a></li>
+                        <li <?php if($this->url()=='/Project1v3_zend/public/data'){echo " class=\"active\"";}?>><a href="<?php echo $this->url('home') ?>"><span class="glyphicon glyphicon-home"></span> <?php echo $this->translate('Home') ?></a></li>
+                        <li <?php if($this->url()=='/Project1v3_zend/public/applicant'){echo " class=\"active\"";}?>><a href="<?php echo $this->url('applicant') ?>"><span class="glyphicon glyphicon-list-alt"></span> <?php echo $this->translate('Profile') ?></a></li>
+                        <li><a href="<?php echo $this->url('zfcuser/logout') ?>"><span class="glyphicon glyphicon-log-out"></span> <?php echo $this->translate('Sign Out'); ?></a></li>
+                    </ul>
+                    <?php endif?>
+                      
+                    
+                   <!--inline login form-->
+<!--                    <form class="navbar-form navbar-right" role="form" method="post" action="user/login">
+                        <div class="form-group">
+                            <input type="text" name="identity" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="credentials" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                      </form>-->
+                    
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+<!--<link href="css/Imageform_style.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.Jcrop.min.js"></script>
+<script src="js/script.js"></script>        -->
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <!--<p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>-->
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

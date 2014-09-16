@@ -1,0 +1,42 @@
+<h1><?php echo $this->translate('Register'); ?></h1>
+
+<?php
+if (!$this->enableRegistration) {
+    echo $this->translate('Registration is disabled');
+    return;
+}
+$form = $this->registerForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/register'));
+//$form->setAttribute('action', $this->url('zfcuser/userdetails'));
+$form->setAttribute('method', 'post');
+?>
+
+<?php echo $this->form()->openTag($form) ?>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
+        <div class="zend_form">
+            <br/>
+            <?php echo $this->formLabel($form->get('email')) ?>
+            <?php echo $this->formInput($form->get('email')->setAttribute('class', 'form-control')->setAttribute('placeholder', 'Your email address')) ?>
+            <?php echo $this->formElementErrors($form->get('email')) ?>
+            <br/>
+            <?php echo $this->formLabel($form->get('password')) ?>
+            <?php echo $this->formInput($form->get('password')->setAttribute('class', 'form-control')->setAttribute('placeholder', 'Your password')) ?>
+            <?php echo $this->formElementErrors($form->get('password')) ?>
+            <br/>
+            <?php echo $this->formLabel($form->get('passwordVerify')) ?>
+            <?php echo $this->formInput($form->get('passwordVerify')->setAttribute('class', 'form-control')->setAttribute('placeholder', 'Your password')) ?>
+            <?php echo $this->formElementErrors($form->get('passwordVerify')) ?>
+
+            <?php if ($this->redirect): ?>
+                <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
+            <?php endif ?>
+            <br/>
+            <?php echo $this->formButton($form->get('submit')->setAttribute('class', 'btn btn-primary')) ?>
+            <br/>
+            <br/>
+        </div>
+    </div>
+</div>        
+<?php echo $this->form()->closeTag() ?>

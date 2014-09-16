@@ -1,0 +1,70 @@
+<div style="float:left; padding-right:16px;"><?php //echo $this->gravatar($this->zfcUserIdentity()->getEmail()) ?></div>
+<h3><span class="glyphicon glyphicon-user"></span> <?php echo $this->translate('Hello'); ?>, <?php echo ucfirst($this->zfcUserDisplayName()); ?>!</h3>
+<a href="<?php echo $this->url('zfcuser/logout') ?>">[<?php echo $this->translate('Sign Out'); ?>]</a>
+<div style="clear:both;"></div>
+</br>
+<?php 
+//for test only
+$form = new Ims\Form\ApplicantForm();
+?>
+<!--form--> 
+<div class="container">
+	<div class="span12">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<fieldset>
+				<legend>User details</legend>
+				<div class="col-xs-8">
+					<div class="row">
+						<label class="control-label col-xs-3">Name</label>
+						<div class="col-xs-9 input-group-sm">
+							<!--div class="input-group input-group-sm">
+								<span class="input-group-addon glyphicon glyphicon-arrow-right"></span-->
+								<input type="text" name="name" class="form-control" placeholder="Your name">
+							<!--/div-->
+						</div>
+					</div>
+					</br>
+					<div class="row">
+						<label class="control-label col-xs-3">Father's Name</label>
+						<div class="col-xs-9">
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon glyphicon glyphicon-arrow-right"></span>
+								<input type="text" name="fname" class="form-control" placeholder="Your Father's name">
+							</div>
+						</div>
+					</div>
+					</br>
+					<div class="row">
+						<label class="control-label col-xs-3">Mother's Name</label>
+						<div class="col-xs-9">
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon"></span>
+								<input type="text" name="mname" class="form-control" placeholder="Your Mother's name">
+							</div>
+						</div>
+					</div>
+					</br>
+					<div class="row">
+						<label class="control-label col-xs-3">Date of Birth</label>
+						<div class="col-xs-9">
+							<input type="date" name="dob" class="form-control">
+						</div>
+					</div>
+					</br>
+						<input type="button" value="submit" class="btn btn-primary"></input>
+					</div>
+				<div class="col-xs-1"><!--column for space between fields and picture-->
+					
+				</div>
+				<div class="col-xs-3">
+					<img src="img/test.jpg" class="img-responsive img-rounded" style="width:150px; height:200px;"></img>
+					<img src="img/sign.jpg" class="img-responsive img-rounded" style="width:150px; height:100px;"></img>
+				</div>
+				</fieldset>
+			</div>
+		</form>
+	</div>
+</div>
+
+

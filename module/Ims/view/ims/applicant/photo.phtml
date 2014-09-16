@@ -1,0 +1,60 @@
+<?php // $this->getApplicantMapper()->uploadImageFile(1);
+$authService = $this->authService;
+$mapper = $this->mapper;
+$mapper->uploadImageFile(1,$authService);
+
+//adding javascripts specific to this page
+$this->headScript()->appendFile($this->basePath('js/jquery.Jcrop.min.js'));
+////    As jquery is already loaded we will not load it here although if extracted and tested separately, it is required.
+//$this->headScript()->appendFile($this->basePath('js/jquery.min.js'));
+$this->headScript()->appendFile($this->basePath('js/script.js'));
+//adding stylesheets specific to this page
+$this->headLink()->appendStylesheet($this->basePath('/css/Imageform_style.css'));
+$this->headLink()->appendStylesheet($this->basePath('/css/jquery.Jcrop.min.css'));
+?>
+<section>
+    <div id="form_div">
+    <fieldset>
+    <!--<legend><strong>Photograph</strong></legend>-->
+         <!--upload form--> 
+        <form id="upload_form" enctype="multipart/form-data" method="post" onsubmit="return checkForm()">
+             <!--hidden crop params--> 
+            <input type="hidden" id="x1" name="x1" />
+            <input type="hidden" id="y1" name="y1" />
+            <input type="hidden" id="x2" name="x2" />
+            <input type="hidden" id="y2" name="y2" />
+            <!--Step1: Please select image file-->
+            <!--<h3 style="font-weight: bold;">Photograph</h3>-->
+            <!--<input type="file" class="btn btn-primary" name="image_file" id="image_file" onchange="fileSelectHandler()" accept="image/*" />-->
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon">Select file for Photograph</span>
+                <!--<input type="file" class="btn btn-primary" name="image_file" id="image_file" onchange="fileSelectHandler()" accept="image/*" />-->
+                <span class="input-group-btn">
+                    <input type="file" class="btn btn-primary" name="image_file" id="image_file" onchange="fileSelectHandler()" accept="image/*" />
+                </span>
+                <span class="input-group-btn">
+                    <input type="submit" value="Upload" name="upload" class="btn btn-success step2" style="width: 200px"/>
+                </span>
+            </div>
+            <div class="error"></div> 
+            <div class="step2"> 
+                <br/>
+                <!--<p style="">Step2: Please select a crop region </p>-->
+                <div><img id="preview"/></div>
+                <div id="image_details" class="info" style="display: none">
+                    <p><label for="filesize">File size</label> <input type="text" id="filesize" name="filesize" ></p>
+                    <p><label for="filetype">Type</label> <input type="text" id="filetype" name="filetype" ></p>
+                    <p><label for="filedim">Dimension</label> <input type="text" id="filedim" name="filedim" ></p>
+                    <p><label for="w">Width</label> <input type="text" id="w" name="w" ></p>
+                    <p><label for="h">Height</label> <input type="text" id="h" name="h" ></p>
+                </div>
+                <div>
+                    <input type="submit" value="Upload" name="upload" class="btn btn-primary"/>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+    </div>
+<?php // $sImage = uploadImageFile(1);?>                                
+</section>

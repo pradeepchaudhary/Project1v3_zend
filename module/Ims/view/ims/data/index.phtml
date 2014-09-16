@@ -1,0 +1,34 @@
+<?php
+ $title = 'Examinations List';
+ $this->headTitle($title);
+?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <!--<p><a href="<?php // echo $this->url('data', array('action'=>'login'));?>">Log in</a>-->
+     <!--|-->  
+    <!--<a href="<?php // echo $this->url('data', array('action'=>'add'));?>">Register</a></p>-->
+
+
+ <table class="table">
+ <tr>
+     <th>Examination</th>
+     <th>Posted on</th>
+     <th>Last Date</th>
+     <th>&nbsp; </th>
+ </tr>
+ <?php foreach ($exams as $data): ?>
+ <tr>
+     <td>
+         <a href="<?php echo $this->url('data',
+             array('action'=>'edit', 'id' => $data->getexamID()));?>">
+             <?php echo $this->escapeHtml($data->getexamname()); ?></a>
+     </td>
+     <td><?php echo $this->escapeHtml($data->getpostedon()); ?></td>
+     <td><?php echo $this->escapeHtml($data->getlastdate()); ?></td>
+     <!--<td><?php // echo $data->getCompleted() ? 'Yes' : 'No'; ?></td>-->
+     <td>
+         <a href="<?php echo $this->url('data',
+             array('action'=>'apply', 'id' => $data->getexamID()));?>">Apply</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>

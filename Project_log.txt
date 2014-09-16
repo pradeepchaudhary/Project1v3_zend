@@ -1,0 +1,6 @@
+
+
+In clearbox, default settings has been changed as C:\wamp\www\Project1v3_zend\public\js\clearbox\config\default\cb_config.js  has been modified to display simple design
+CB_SimpleDesign='on',
+and to stop displaying the clearbox is ready, etc messages
+CB_OSD='off',	

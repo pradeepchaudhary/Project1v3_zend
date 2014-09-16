@@ -1,0 +1,445 @@
+<?php $this->headScript()->appendFile($this->basePath('js/clearbox.js'));
+$this->headLink()->appendStylesheet($this->basePath('/css/map_style.css'));?>
+
+<div style="float:left; padding-right:16px;"><?php //echo $this->gravatar($this->zfcUserIdentity()->getEmail()) ?></div>
+<h3><span class="glyphicon glyphicon-user"></span> <?php echo $this->translate('Hello'); ?>, <?php echo ucfirst($this->zfcUserDisplayName()); ?>!</h3>
+<a href="<?php echo $this->url('zfcuser/logout') ?>">[<?php echo $this->translate('Sign Out'); ?>]</a>
+<div style="clear:both;"></div>
+<br/>
+<?php 
+    $applicant = $this->form;
+//    var_dump($applicant);
+    $applicant->prepare(); 
+    echo $this->form()->openTag($applicant); 
+?>
+<style type="text/css">
+    .control-label{
+        text-align: right;
+    }
+</style>
+<?php 
+//        $applicant = $form->get('applicant');
+?>
+<div class="row">
+    <div class="span12">
+        <!--<form class="form-horizontal">-->
+            <div class="form-group">
+                <fieldset>
+                    <legend>User details</legend>
+                    <div class="col-xs-8">
+                        <?php echo $this->formHidden($applicant->get('user_id'));?>
+                        <div class="row">
+                            <label class="control-label col-xs-3">
+                                <?php echo $this->formlabel($applicant->get('name')); ?>
+                            </label>
+                            <div class="col-xs-9">
+                                <?php 
+                                    echo $this->forminput($applicant->get('name')->setAttribute('class','form-control')); 
+                                    echo $this->formElementerrors($applicant->get('name')); 
+                                ?>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <label class="control-label col-xs-3">
+                                <?php echo $this->formlabel($applicant->get('fathersname')); ?>
+                            </label>
+                            <div class="col-xs-9">
+                                <?php 
+                                    echo $this->forminput($applicant->get('fathersname')->setAttribute('class','form-control'));
+                                    echo $this->formElementerrors($applicant->get('fathersname'));
+                                ?>
+                            </div>				
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('mothersname')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('mothersname')->setAttribute('class','form-control')); 
+                                    echo $this->formElementerrors($applicant->get('mothersname')->setAttribute('class','form-control')); 
+                                    ?>
+                                </div>				
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('sex')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('sex')); 
+                                    echo $this->formElementerrors($applicant->get('sex')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('dob')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->forminput($applicant->get('dob')); 
+                                    echo $this->formElementerrors($applicant->get('dob')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('age')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->forminput($applicant->get('age')); 
+                                    echo $this->formElementerrors($applicant->get('age')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('religion')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->forminput($applicant->get('religion')); 
+                                    echo $this->formElementerrors($applicant->get('religion')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('nationality')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php echo $this->forminput($applicant->get('nationality')); ?>
+                                    <?php echo $this->formElementerrors($applicant->get('nationality')); ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('maritalstatus')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->forminput($applicant->get('maritalstatus')); 
+                                    echo $this->formElementerrors($applicant->get('maritalstatus')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('handicapped')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('handicapped')); 
+                                    echo $this->formElementerrors($applicant->get('handicapped')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('community')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('community')); 
+                                    echo $this->formElementerrors($applicant->get('community')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('minority')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('minority')); 
+                                    echo $this->formElementerrors($applicant->get('minority')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('feeremission')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('feeremission')); 
+                                    echo $this->formElementerrors($applicant->get('feeremission')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <?php echo $this->formHidden($applicant->get('place_id'));?>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('caddl1')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('caddl1')); 
+                                    echo $this->formElementerrors($applicant->get('caddl1')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('caddl2')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('caddl2')); 
+                                    echo $this->formElementerrors($applicant->get('caddl2')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('ccity')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('ccity')); 
+                                    echo $this->formElementerrors($applicant->get('ccity')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('cstate')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('cstate')); 
+                                    echo $this->formElementerrors($applicant->get('cstate')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('cpincode')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('cpincode')); 
+                                    echo $this->formElementerrors($applicant->get('cpincode')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('ccountry')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('ccountry')); 
+                                    echo $this->formElementerrors($applicant->get('ccountry')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('paddl1')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('paddl1')); 
+                                    echo $this->formElementerrors($applicant->get('paddl1')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('paddl2')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('paddl2')); 
+                                    echo $this->formElementerrors($applicant->get('paddl2')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('pcity')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('pcity')); 
+                                    echo $this->formElementerrors($applicant->get('pcity')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('pstate')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('pstate')); 
+                                    echo $this->formElementerrors($applicant->get('pstate')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('ppincode')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('ppincode')); 
+                                    echo $this->formElementerrors($applicant->get('ppincode')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                        <div class="row">
+                                <label class="control-label col-xs-3">
+                                    <?php echo $this->formlabel($applicant->get('pcountry')); ?>
+                                </label>
+                                <div class="col-xs-9">
+                                    <?php 
+                                    echo $this->formElement($applicant->get('pcountry')); 
+                                    echo $this->formElementerrors($applicant->get('pcountry')); 
+                                    ?>
+                                </div>
+                        </div><br/>
+                <?php echo $this->formHidden($applicant->get('security')); ?>
+                <?php echo $this->formInput($applicant->get('submit')->setAttribute('class',"btn btn-primary")); ?>
+                </div>
+                <div class="col-xs-1"><!--column for space between fields and picture-->
+
+                </div>
+                <div class="col-xs-3">
+                    <div class="row">
+                        <a href="applicant/photo" onclick="" rel="clearbox[width= 1200,height=800]"><img id="photo" src="img/user_uploads/<?php echo $authService->getIdentity()->getId().'photo.jpg';?>" class="img-responsive img-rounded" style="width:150px; height:200px;"></img></a>
+                    </div>
+                    <div class="row">
+                        <a href="applicant/photo" onclick="" rel="clearbox[width= 1200,height=800]"><img id="sign" src="img/sign.jpg" class="img-responsive img-rounded" style="width:150px; height:100px;" onclick="<?php // echo show_gallery();?>"></img></a>
+                    </div>
+                    <br/><br/><br/>
+                    <div class="row">
+                        <a href="applicant/map" onclick="" rel="clearbox[width= 1200,height=800]"><img src="img/maps-icon-os-x-300x300.png" class="img-responsive img-rounded" style="width:150px; height:auto;" onclick="<?php // echo show_gallery();?>"></img>Map your address</a>
+                    </div>
+                        <!--<a onclick="showIframe()">Picture Widget</a>-->
+                        <?php // echo show_gallery();?>
+                        <!--<input type="button" onClick="button_onclick()" value="Test"><br/>-->
+                        <a id="maplink" href="#" rel="clearbox[width= 1200,height=800]" title="Caption">Map your address</a>
+                </div>
+                </fieldset>
+            </div>
+        <!--</form>-->
+    </div>
+</div>
+<?php echo $this->form()->closeTag($applicant); ?>
+
+<!--<script>
+//test function for image click
+function button_onclick()
+{
+	var popup = window.open("", "", "");
+	popup.document.write(content);
+}
+//test function for image click
+function onrequest() {
+//      $.post( 
+//          'image.php'
+//       ).success(function(resp){
+//            json = $.parseJSON(resp);
+//            alert(json);
+//       });
+}
+//test function to display data in iframe
+function showIframe() {
+            /* Parent element */
+            var widget = document.createElement("div");
+            widget.style.position="fixed";
+            widget.style.top="100px";
+            widget.style.left="100px";
+            widget.style.width="600px";
+            widget.style.height="400px";
+
+            /* picture uploading page frame */
+            var iframe = document.createElement("iframe");
+            iframe.src = "http://localhost:1907/Project1v3_zend/public/data"; // use your picture upload URL here
+
+            /* Add to document */
+            widget.appendChild(iframe);
+            document.body.appendChild(widget);
+}
+</script>-->
+
+<script type="text/javascript">
+(function( window ) {
+  "use strict";
+  var document = window.document,
+      fieldValueMap = {
+            "title"       : "Captain"
+          , "name"        : "Jack Sparrow"
+          , "fullname"    : "Jack Sparrow"
+          , "firstname"   : "Jack"
+          , "lastname"    : "Sparrow"
+//          , "sex"         : "Male"
+          , "fathersname" : "Code Keeper"
+          , "mothersname" : "Not listed"
+          , "dob"         : "1987-07-19"
+          , "age"         : "27"
+          , "religion"    : "Pirate"
+          , "maritalstatus": "Unmarried"
+//          , "handicapped" : "No"
+          , "community"   : "Pirate Community"
+//          , "minority"    : "Yes"
+//          , "feeremission": "No"
+          , "caddl1"      : "Captain's Cabin"
+          , "caddl2"      : "Black Pearl"
+          , "ccity"       : "Not applicable"
+          , "cstate"      : "Not applicable"
+          , "cpincode"    : "123446"
+          , "ccountry"    : "Not applicable"
+          , "email"       : "jack.sparrow@pirates.com"
+          , "username"    : "JackSparrow"
+          , "password"    : "blackpearl"
+          , "confirmation": "blackpearl"
+          , "position"    : "Captain"
+          , "zipcode"     : "110011"
+          , "country"     : "Unknown"
+          , "state"       : "Unknown"
+          , "city"        : "Totuga"
+          , "address"     : "3153 auburn ave"
+          , "phone"       : "(135)-773-2494"
+          , "cell"        : "(327)-710-3077"
+          , "SSN"         : "966-49-5276"
+          , "company"     : "Night Watch"
+          , "nationality" : "Not applicable"
+          , "comment"     : "This is a test data. Please, ignore it."
+          , "jobtitle"    : "Crow"
+          , "experiance"  : "Veteran (5+)"
+          , "site_link"   : "jon.winterfell.we"
+          , "how"         : "other (Please specify)"
+          , "specified"   : "This is a test data. Please, ignore it."
+          , "publication" : "Westeros Daily"
+      };
+
+    Object.keys( fieldValueMap ).forEach(function( name ){
+
+        var input = document.querySelector( "form input[name='" + name + "']" )
+                        || document.querySelector( "form select[name='" + name + "']" )
+            || document.querySelector( "form textarea[name='" + name + "']" );
+
+        input && input.type !== "hidden" && ( input.value = fieldValueMap[ name ] );
+    });
+
+})( window );    
+
+</script>
+<!--    
+<script>
+    $(document).ready(function(){
+//        $('#map').hide(); 
+        $('#map').width("75%"); 
+        $('#map').href("applicant/photo"); 
+    });
+    $('#maplink').click( function() { 
+//        $('#map').show(); 
+//        $(this).addrel("#map");
+        return false;
+    } );
+</script>-->
